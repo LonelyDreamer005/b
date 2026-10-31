@@ -39,3 +39,29 @@ docker stop bir-container
 ```bash
 docker logs bir-container
 ```
+
+### Terraform codespaces:
+```bash
+# Update packages
+sudo apt-get update
+
+# Install required packages
+sudo apt-get install -y gnupg software-properties-common curl wget
+
+# Add HashiCorp GPG key
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+# Add Terraform repository
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(. /etc/os-release && echo $VERSION_CODENAME) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+# Update package list
+sudo apt-get update
+
+# Install Terraform
+sudo apt-get install -y terraform
+
+# Verify installation
+terraform -version
+```
