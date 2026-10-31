@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bir-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bir
+  template:
+    metadata:
+      labels:
+        app: bir
+    spec:
+      containers:
+        - name: bir-container
+          image: bir:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
